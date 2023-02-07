@@ -32,15 +32,14 @@ public class Author {
         return this.name + " " + this.surname;
     }
 
-    public boolean equals(Author author) {
-        if (this.getName() != author.getName() && this.getSurname() != author.getSurname()) {
-            return false;
-        } else {
-            return true;
-        }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Author author = (Author) o;
+        return name.equals(author.name) && surname.equals(author.surname);
     }
-
-    public int hashCode() {
+       public int hashCode() {
         return java.util.Objects.hash(name, surname);
     }
 }

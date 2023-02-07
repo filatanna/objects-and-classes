@@ -43,15 +43,17 @@ public class Book {
         return this.nameBook + " " + this.author + " " + this.ageBook;
     }
 
-    public boolean equals(Book book) {
-        if (this.getNameBook() != book.getNameBook() && this.getAgeBook() != book.getAgeBook() && this.getAuthor() != book.getAuthor()) {
-            return false;
-        } else {
-            return true;
-
-        }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return ageBook == book.ageBook && nameBook.equals(book.nameBook) && author.equals(book.author);
     }
+
+
+    @Override
     public int hashCode() {
         return java.util.Objects.hash(nameBook, ageBook, author);
-    }
+            }
 }
